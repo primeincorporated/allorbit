@@ -1,0 +1,67 @@
+{embed="Includes/.Source" pageTitle="" pageDescription=""}
+		<link rel="stylesheet" type="text/css" href="{site_url}assets/images/login.css" />
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12">
+				<div class="col-xs-12 col-md-6">
+					<h1>SIGN UP NOW</h1>
+					<p>The number one job board in th world for IOS, Android, Java, and many more!</p>
+					{exp:freemember:register 
+						return="account/profile" 
+						group_id="5"
+						error_handling="inline" 
+						error_delimiters='<span class="error">|</span>'
+					}
+					
+					    <div class="col-xs-12 col-md-6">
+					        <label for="first_name">First Name</label><br />
+					        {field:first_name}<br />
+					        {error:first_name}
+					    </div>
+					    <div class="col-xs-12 col-md-6">
+					        <label for="last_name">Last Name</label><br />
+					        {field:last_name}<br />
+					        {error:last_name}
+					    </div>
+					    <div class="col-xs-12">
+					        <label for="email">Email</label><br />
+					        {field:email}<br />
+					        {error:email}
+					    </div>
+					    <div class="col-xs-12">
+					        <label for="password">Password</label><br />
+					        {field:password}<br />
+					        {error:password}
+					    </div>
+					
+					    <div class="col-xs-12">
+					        <label for="password_confirm">Confirm Password</label><br />
+					        {field:password_confirm}<br />
+					        {error:password_confirm}
+					    </div>
+					
+					    <div class="col-xs-12">
+					        <p>{field:accept_terms} I Accept All Orbits Terms and Conditions</p>
+					        {error:accept_terms}
+					    </div>
+					
+					    <div class="col-xs-12">
+					        <input type="submit" value="Candidates Sign Up" class="button" />
+					    </div>
+					
+					{/exp:freemember:register}
+				</div>
+				<div class="col-xs-12 col-md-6">
+					<img src="{site_url}assets/images/register.png" class="img-responsive" />
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>
