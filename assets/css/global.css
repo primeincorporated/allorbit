@@ -73,7 +73,7 @@ a {
 }
 
 a:hover {
-
+	text-decoration: none;
 }
 
 strong, b {
@@ -108,7 +108,14 @@ li {
 }
 
 .button {
-	display: inline-block;
+	display: block;
+	width: 100%;
+	margin: 10px auto;
+	padding: 30px 15px;
+	color: #000;
+	text-align: center;
+	background-color: #fff;
+	border: 2px solid #000;
 	transition: all .3s linear;
 	-moz-transition: all .3s linear;
 	-ms-transition: all .3s linear;
@@ -117,7 +124,9 @@ li {
 }
 
 .button:hover {
-	opacity: .5;
+	color: #000;
+	background-color: #ddd;
+	cursor: pointer;
 }
 
 body, html {
@@ -127,4 +136,80 @@ body, html {
 
 body {
 	
+}
+
+label {
+	margin: 8px 0px 3px;
+	font-size: 12px;
+}
+input {
+	width: 100%;
+	padding: 4px 10px;
+}
+input[type=checkbox]{
+	width: auto !important;
+	margin-right: 15px;
+}
+
+
+/* -- GLOBAL NAVIGATION -- */
+.navbar {
+	margin: 15px auto;
+	padding: 15px;
+	border: 2px solid #000;
+}
+#logo {
+	
+}
+#navigation_login_form label {
+	
+}
+#navigation_login_form input {
+	
+}
+#navigation_login_form input[type=submit] {
+
+}
+#navigation_forgot_password {
+	float:right;
+	margin: 8px 15px 0px;
+	font-size: 12px;
+}
+.navigation {
+	
+}
+.navigation li {
+	list-style: none;
+}
+.navigation li a {
+	float: left;
+	display: inline-block;
+	margin: 10px 0px;
+	padding: 5px 10px;
+	font-size: 16px;
+	border-right: 2px solid #000;
+}
+
+
+/* -- SIDE NAVIGATION -- */
+.side_navigation {
+	min-height: 400px;
+	margin: 0px;
+	border-right: 2px solid #000;
+}
+.side_navigation li {
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+.side_navigation li a {
+	display: block;
+	width: 100%;
+	margin: 0px;
+	padding: 8px 5px;
+	text-align: right;
+	background-color: #ccc;
+}
+.side_navigation li a:hover {
+	background-color: #999;
 }

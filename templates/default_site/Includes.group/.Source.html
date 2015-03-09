@@ -67,7 +67,24 @@ Site Created By
 						'overlayShow'	:	true
 					});
 					
+					resize();
 				});
+				
+				$(window).resize(resize);
+				
+				function resize(){
+					//set full height
+					var navigation = $(".navbar").outerHeight(true);
+					var footer = 0;
+					var height = $(window).height() - (navigation + footer);
+					console.log(navigation, height);
+					$(".full-height").height(height);
+					
+					$(".center-vertically").each(function(){
+						var margin = ($(this).parent().outerHeight() - $(this).outerHeight() ) / 2;
+						$(this).css("margin-top", margin + "px");
+					});
+				}
 	        </script>		
 			<title> {if embed:pageTitle !=""}{embed:pageTitle} |{/if} {site_name}</title>
 			<meta name="description" content="{embed:pageDescription}" />
