@@ -150,6 +150,11 @@ input[type=checkbox]{
 	width: auto !important;
 	margin-right: 15px;
 }
+.box-outline {
+	padding: 15px;
+	border: 1px solid #000;
+	background-color: #aaa;
+}
 
 
 /* -- GLOBAL NAVIGATION -- */

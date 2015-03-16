@@ -1,5 +1,11 @@
 {embed="Includes/.Source" pageTitle="" pageDescription=""}
 		<link rel="stylesheet" type="text/css" href="{site_url}assets/css/login.css" />
+		
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$(".account-notification-bar").delay(5000).slideUp();
+			});
+		</script>
 	</head>
 	
 	<body>
@@ -10,7 +16,13 @@
 				{embed="account/.sidebar"}
 			</div>
 			<div class="col-xs-12 col-md-10">
-				
+				{if segment_3}
+					<div class="col-xs-12 account-notification-bar box-outline">
+						{if segment_3 == "updated-login"}
+							<p class='text-center'>Your login information has been updated.</p>
+						{/if}
+					</div>
+				{/if}
 			</div>
 		</div>
 		
