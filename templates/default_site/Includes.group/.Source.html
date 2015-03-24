@@ -34,39 +34,26 @@ Site Created By
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 		<!-- JQUERY LIBRARY -->
-			<script type="text/javascript" src="{site_url}assets/js/jquery.js"></script>	
+			<script type="text/javascript" src="{global_url}assets/js/jquery.js"></script>	
 	
 		<!-- BOOTSTRAP -->
-			<script type="text/javascript" src="{site_url}assets/bootstrap/js/bootstrap.min.js"></script>
-			<link type="text/css" rel="stylesheet" href="{site_url}assets/bootstrap/css/bootstrap.min.css" />
+			<script type="text/javascript" src="{global_url}assets/bootstrap/js/bootstrap.min.js"></script>
+			<link type="text/css" rel="stylesheet" href="{global_url}assets/bootstrap/css/bootstrap.min.css" />
 	
 	
 		<!-- CSS STYLESHEETS -->		
-			<link type="text/css" rel="stylesheet" href="{site_url}assets/css/reset.css" />
-			<link type="text/css" rel="stylesheet" href="{site_url}assets/css/global.css" />
+			<link type="text/css" rel="stylesheet" href="{global_url}assets/css/reset.css" />
+			<link type="text/css" rel="stylesheet" href="{global_url}assets/css/global.css" />
 		
 			
 		<!-- JQUERY CYCLE -->
-			<script type="text/javascript" src="{site_url}assets/js/cycle.js"></script>
+			<script type="text/javascript" src="{global_url}assets/js/cycle.js"></script>
 			
 		<!-- SAME HIGHT SCRIPT -->
-			<script type="text/javascript" src="{site_url}assets/js/sameHeight.js"></script>	
+			<script type="text/javascript" src="{global_url}assets/js/sameHeight.js"></script>	
 
-
-		<!-- JQUERY FANCYBOX -->
-	        <script type="text/javascript" src="{site_url}assets/fancybox/fancybox.js"></script>
-	        <link type="text/css" rel="stylesheet" href="{site_url}assets/fancybox/fancybox.css" media="screen" />
 	        <script type="text/javascript">
 	        	$(document).ready(function() {
-					
-					$(".fancybox").fancybox({
-						'transitionIn'	:	'fade',
-						'transitionOut'	:	'fade',
-						'speedIn'		:	1000, 
-						'speedOut'		:	500, 
-						'overlayShow'	:	true
-					});
-					
 					resize();
 				});
 				
@@ -77,7 +64,6 @@ Site Created By
 					var navigation = $(".navbar").outerHeight(true);
 					var footer = 0;
 					var height = $(window).height() - (navigation + footer);
-					console.log(navigation, height);
 					$(".full-height").height(height);
 					
 					$(".center-vertically").each(function(){

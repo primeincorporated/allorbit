@@ -1,0 +1,61 @@
+			<div class="footer">
+				<p>&copy; {current_time format="%Y"} Solspace, Inc.</p>
+			</div>
+			
+			{!-- Begin Testing and Debugging --}
+			<div class="panel panel-default solspace-debug">
+				<div class="panel-heading">
+					<h3 class="panel-title">Logged In/Out Testing &amp; Debugging</h3>
+				</div>
+				<div class="panel-body">
+					<ul>
+						<li>Are you Logged in?: {if logged_in}Your are Logged In{/if}{if logged_out}Your are Logged Out{/if}</li>
+						<li>Currently Logged in Member ID: {logged_in_member_id}</li>
+						<li>Currently Logged in Username: {logged_in_username}</li>
+						<li>Currently Logged in Screen Name: {logged_in_screen_name}</li>
+						<li>Currently Logged in Member Group ID: {logged_in_group_id}</li>
+					</ul>
+				</div>
+			</div>
+			{!-- End Testing and Debugging --}
+
+		</div> <!-- /container -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<script src="{exp:favorites:theme_folder_url}code_pack/js/bootstrap.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$(".tips").tooltip({
+					placement : 'top'
+				});
+
+				$("body").delegate('button.update, button.delete, button.new', 'click', function(e){
+
+					e.preventDefault(); // Prevent the form from submitting normally (i.e. moving to another page)
+
+					var theTarget 	= $(this).closest("div.favorites");
+					var theAction   = $(this).closest("form").attr("action");
+					var theData     = $(this).closest("form").serialize();
+
+					theTarget.find("button").attr('disabled', true); // Disabling buttons upon click
+
+			        $.ajax({
+		                    type:     "POST",
+		                    url: theAction, // Providing the URL, taken from "theAction"
+		                    data: theData, // Providing the form data, serialized above in "theData"
+		                    success: function(results){
+		                            // What to do when the ajax is successful.
+		                            // "results" is the response from the url (eg. "theAction" here)
+		                            theTarget.html(results);
+		                        },
+		                    error: function(results){
+		                            // What to do when the ajax fails.
+		                            console.log(results);
+		                            theTarget.html("An error was encountered. Please see your browser console for details.");
+		                    }
+			        });
+				})
+			});
+		</script>
+	</body>
+</html>

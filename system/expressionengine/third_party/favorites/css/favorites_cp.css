@@ -1,0 +1,10 @@
+#mainContent .pageContents p#solspace_version_number {
+	color:			#fff;
+	left: 			100%;
+	margin: 		-38px 0 0 -380px;
+	position: 		absolute;
+	text-align: 	right;
+	text-shadow: 	0 1px 0 #666;
+	width: 			300px;
+	z-index: 		10000;
+}

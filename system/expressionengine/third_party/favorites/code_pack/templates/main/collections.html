@@ -1,0 +1,92 @@
+{if logged_in_group_id == "1"}
+<!-- a bad idea to let everyone create new collections -->
+{embed="%prefix%inc/index" page_title="Update Collections"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="collections"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Update Collections</h1>
+				<p class="lead">You're able to create new and edit existing collections here.</p>
+				<div class="alert alert-danger" role="alert">
+ 					<p><strong>Warning:</strong> be VERY careful who you give access to this page. We strongly recommend you only provide access to Administrators of your website. By default, this pages' content is wrapped with a conditional that only allows Super Admins to access.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4">
+					<h3>Entry Collections</h3>
+					<p>
+	  				{exp:favorites:collection_form
+						type="entry"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Add new collection" style="width:80%;display:inline-block;" />
+						<button type="submit" class="btn btn-sm btn-success" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+					</p>
+					{exp:favorites:collections type="entry"}
+					<p>
+					{exp:favorites:collection_form
+						type="entry"
+						collection_id="{favorites:collection_id}"
+						edit_mode="yes"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Collection name" style="width:80%;display:inline-block;" value="{favorites:collection_name}" />
+						<button type="submit" class="btn btn-sm btn-warning" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+					</p>
+					{/exp:favorites:collections}
+				</div>
+				<div class="col-md-4">
+					<h3>Member Collections</h3>
+					<p>
+	  				{exp:favorites:collection_form
+						type="member"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Add new collection" style="width:80%;display:inline-block;" />
+						<button type="submit" class="btn btn-sm btn-success" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+					</p>
+					{exp:favorites:collections type="member"}
+					<p>
+					{exp:favorites:collection_form
+						type="member"
+						collection_id="{favorites:collection_id}"
+						edit_mode="yes"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Collection name" style="width:80%;display:inline-block;" value="{favorites:collection_name}" />
+						<button type="submit" class="btn btn-sm btn-warning" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+					</p>
+					{/exp:favorites:collections}
+				</div>
+
+				<div class="col-sm-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+      		</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Update Collections" page displays all current collections for the site.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/collections/">Favorites:Collections</a> filtered by type (entry/member), to display a list of all the currently available Favorites collections for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/collection_form/">Favorites:Collection_Form</a> to display a form to allow admins to add or update existing Favorites collections.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/collections/">Favorites:Collections</a> filtered by type (entry/member), to display a list of all the currently available Favorites collections for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/entries/">Favorites:Entries</a> to display the saved favorited entries of the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/members/">Favorites:Members</a> to display the saved favorited members of the currently logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}
+{if:else}
+Sorry, you must be an administrator to view this page.
+{/if}

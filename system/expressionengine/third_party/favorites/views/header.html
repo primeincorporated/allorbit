@@ -1,0 +1,22 @@
+<?php if ($message != ''):?>
+	<script type="text/javascript">
+		var Solspace = window.Solspace = window.Solspace || {};
+		Solspace.message = '<?php echo addslashes($message);?>';
+	</script>
+<?php endif;?>
+
+<p id="solspace_version_number"><strong><?=$lang_module_version?> <?=$module_version?></strong></p>
+
+<ul class="tab_menu" id="tab_menu_tabs">
+<?php foreach($module_menu AS $menu_name => $menu_item) : ?>
+	<li class="content_tab<?=($menu_name == $module_menu_highlight) ? ' current': ''?>">
+		<a  <?php if (isset($menu_item['new_window']) AND
+						$menu_item['new_window']): ?>onclick="window.open(this.href); return false;"<?php endif;?>
+			href="<?=$menu_item['link']?>"><?=$menu_item['title']?></a>
+	</li>
+<?php endforeach; ?>
+</ul>
+
+<div style="height:1px; margin-bottom:-1px;" class="clear_left shun">&nbsp;</div>
+
+

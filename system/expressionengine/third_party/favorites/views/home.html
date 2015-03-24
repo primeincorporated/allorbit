@@ -1,0 +1,60 @@
+<?php if( ! AJAX_REQUEST ): ?>
+<?=form_open($search_url, 'id="favorites_search"')?>
+	<fieldset>
+		<?=form_dropdown('member_id', $favoriters, $selected_member_id)?>
+		<?=form_dropdown('collection_id', $collections, $selected_collection)?>
+	</fieldset>
+<?=form_close()?>
+<p></p>
+<?php endif ?>
+
+<div id="favorites-results">
+	<div class="inner">
+	<?php if(isset($favorites['entry_id'])) :?>
+		<?=form_open($modify_url)?>
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<?php foreach($entry_cols as $col) :?>
+					<th width="<?=$col == 'item_id' ? '1%' : '25%'; ?>"><?=lang($col);?></th>
+					<?php endforeach ?>
+					<?php if( ! empty($selected_member_id) ) : ?>
+					<th width="1%"><input type="checkbox" name="toggle" /></th>
+					<?php endif ?>
+				</tr>
+				<?php foreach($favorites['entry_id'] as $row => $data) :?>
+				<tr>
+					<?php foreach($entry_cols as $col) :?>
+					<td>
+						<?php if($col == 'title') :?>
+							<a href="<?=$data['url']?>"><?=$data[$col];?></a>
+						<?php else :?>
+							<?=$data[$col];?>
+						<?php endif ?>
+					</td>
+					<?php endforeach ?>
+					<?php if( ! empty($selected_member_id) ) : ?>
+					<td><input type="checkbox" name="toggle[]" value="<?=$data['favorite_id']?>" /></td>
+					<?php endif ?>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+
+		<?php if( ! empty($selected_member_id) ) : ?>
+		<div style="float:right;">
+			<div class="itemWrapper">
+				<input type="submit" class="submit" value="<?=lang('submit');?>">
+				&nbsp;
+				<select name="action" class="select">
+					<option value="delete"><?=lang('Delete Selected')?></option>
+					<option value="edit"><?=lang('Edit Selected')?></option>
+				</select>
+			</div>
+		</div>
+		<?php endif ?>
+
+		<?=form_close()?>
+	<?php else : ?>
+		<p><?=lang('no_entries');?></p>
+	<?php endif ?>
+	</div>
+</div>

@@ -1,0 +1,97 @@
+					<div class="well favorites">
+					<!-- DISPLAY the current favorites. This won't parse if there are no favorites for the item yet. -->
+					{exp:favorites:info
+						{embed:type}_id="{embed:id}"
+						disable_pagination="yes"
+					}
+						<p>
+							You saved this to
+							<span class="label label-{if embed:type == "entry"}info{if:elseif embed:type == "member"}primary{if:else}default{/if}">
+								<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+								{favorites:collection_name}</span>
+							on {favorites:favorited_date format="%F %j, %Y"}
+							{if favorites:notes} with the notes: <i>{favorites:notes}</i>{/if}
+						</p>
+					<!-- EDIT this current favorite -->
+						<p>
+						{exp:favorites:edit
+							favorite_id="{favorites:favorite_id}"
+							return="%prefix%inc/favorites_info_ajax/{embed:type}/{embed:id}"
+							form:style="display:inline;"
+							error_page="%prefix%inc/error_ajax"
+						}
+							<select name="collection" class="form-control input-sm" style="width:30%;display:inline-block;margin-right:5px;">
+							{favorites:collections}
+								<option value="{favorites:collection}" {favorites:selected}>
+									{favorites:collection}
+								</option>
+							{/favorites:collections}
+							</select>
+							<input type="text" name="notes" value="{favorites:notes}" class="form-control input-sm" placeholder="Notes for this favorite" style="width:30%;display:inline-block;" />
+							<button type="submit" class="btn btn-sm btn-warning update" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+						{/exp:favorites:edit}
+					<!-- DELETE the current favorite -->
+						{exp:favorites:edit
+							favorite_id="{favorites:favorite_id}"
+							return="%prefix%inc/favorites_info_ajax/{embed:type}/{embed:id}"
+							form:style="display:inline;"
+							error_page="%prefix%inc/error_ajax"
+						}
+							<input type="hidden" name="delete" value="yes" style="display:inline-block;">
+							<button type="submit" class="btn btn-sm btn-danger delete" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+						{/exp:favorites:edit}
+						</p>
+					<!-- If there are no favorites, offer to save as a favorite -->
+					{if favorites:no_results}
+						<p>
+						<!-- Create a Favorite -->
+						{exp:favorites:form
+							{embed:type}_id="{embed:id}"
+							return="%prefix%inc/favorites_info_ajax/{embed:type}/{embed:id}"
+							error_page="%prefix%inc/error_ajax"
+						}
+							<select name="collection" class="form-control input-sm" style="width:30%;display:inline-block;margin-right:5px;">
+							{favorites:collections}
+								<option value="{favorites:collection}">{favorites:collection}</option>
+							{/favorites:collections}
+							</select>
+							<input type="text" name="notes" id="notes" class="form-control input-sm" placeholder="Notes for this favorite" style="width:30%;display:inline-block;" />
+							<button type="submit" class="btn btn-sm btn-success new" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+						{/exp:favorites:form}
+						</p>
+					{/if}
+					{/exp:favorites:info}
+					</div>
+					{!-- Begin Testing and Debugging --}
+					<div class="panel panel-default solspace-debug">
+						<div class="panel-heading">
+							<h3 class="panel-title">Favorites Data Testing &amp; Debugging</h3>
+						</div>
+						<div class="panel-body">
+						{exp:favorites:info {embed:type}_id="{embed:id}" disable_pagination="yes"}
+							<ul>
+								<li>Favorites ID: {favorites:favorite_id}</li>
+								<li>Collection Name: {favorites:collection_name}</li>
+								<li>Collection ID: {favorites:collection_id}</li>
+								<li>Collection Notes: {favorites:notes}</li>
+								<li>Collection Date (saved on): {favorites:favorited_date format="%F %j, %Y"} / Unix Timestamp: {favorites:favorited_date}</li>
+								<li>Count: {favorites:count}</li>
+								<li>Total Results: {favorites:total_results}</li>
+								<li>Absolute Count: {favorites:absolute_count}</li>
+								<li>Absolute Results: {favorites:absolute_results}</li>
+								<li>Embed ID: {embed:id}</li>
+								<li>Embed Type: {embed:type}</li>
+								<li>
+									Embed Type Conditonal:
+									{if embed:type == "entry"}Test on 'entry' returns True{/if}
+									{if embed:type == "member"}Test on 'member' returns True{/if}
+									{if embed:type != "entry" AND embed:type != "member"}Test on 'entry' and 'member' returns False{/if}
+								</li>
+							</ul>
+						{if favorites:no_results}
+							<p>No Favorites data for the currently logged in user.</p>
+						{/if}
+						{/exp:favorites:info}
+						</div>
+					</div>
+					{!-- End Testing and Debugging --}

@@ -1,0 +1,28 @@
+<div id="favorites-results">
+	<div class="inner">
+		<h3><?=lang('new_collection')?></h3>
+		<form action="<?=$form_uri?>" method="post">
+			<input type="hidden" name="XID" value="<?php echo $XID_SECURE_HASH;?>" />
+			<input type="hidden" name="action" value="<?=$action;?>" />
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<th><?=lang('collection_name')?></th>
+					<th><?=lang('collection_type')?></th>
+				</tr>
+				
+				<tr>
+					<td>
+						<?=form_input('collection_name')?>
+					</td>
+					<td>
+						<?=form_dropdown('type', $types)?>
+					</td>
+				</tr>
+				
+			</table>
+
+			<input type="submit" class="submit" value="<?=lang('submit');?>">				
+		
+		</form>
+	</div>
+</div>

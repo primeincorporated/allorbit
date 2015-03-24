@@ -1,0 +1,53 @@
+<div id="favorites-results">
+	<div class="inner">
+	<?php if(isset($favorites[$type])) :?>
+		<h3><?=$edit_page_title?></h3>
+		<form action="<?=$form_uri?>" method="post">
+			<input type="hidden" name="XID" value="<?php echo $XID_SECURE_HASH;?>" />
+			<input type="hidden" name="type" value="<?=$type?>" />
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<?php foreach($cols as $col) :?>
+					<th width="<?=in_array($col, array('item_id')) ? '1%' : '25%'; ?>"><?=lang($col);?></th>
+					<?php endforeach ?>
+
+				</tr>
+				<?php foreach($favorites[$type] as $row => $data) :?>
+				<tr>
+					<?php foreach($cols as $col) :?>
+					<td>
+						<?php if($col == 'collection_name') :?>
+							<?=form_hidden('favorites_id['.$data['favorite_id'].']', $data['favorite_id']); ?>
+							<?=form_dropdown('collection_id['.$data['favorite_id'].']', $collections, $data['collection_id'])?>
+						<?php elseif($col == 'notes') :?>
+							<?=form_hidden('favorites_id['.$data['favorite_id'].']', $data['favorite_id']); ?>
+							<?php $textareaoptions = array(
+						              'name'        => 'notes['.$data['favorite_id'].']',
+						              'value'       => $data[$col],
+						              'cols'   => '90',
+						              'rows'        => '6',
+						            );
+							?>
+							<?=form_textarea($textareaoptions)?>
+						<?php else :?>
+							<?=$data[$col];?>
+						<?php endif ?>
+					</td>
+					<?php endforeach ?>
+
+				</tr>
+				<?php endforeach; ?>
+			</table>
+
+		<div style="float:right;">
+			<div class="itemWrapper">
+				<input type="submit" class="submit" value="<?=lang('update');?>">
+			</div>
+		</div>
+
+		</form>
+	<?php else : ?>
+		<p><?=lang('no_results');?></p>
+	<?php endif ?>
+	</div>
+</div>

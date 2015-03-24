@@ -1,0 +1,42 @@
+{embed="%prefix%inc/index" page_title="Delete All Favorites"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="delete_all"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Delete All Favorites</h1>
+				<p class="lead">This page removes ALL saved favorites for the logged in member.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					<div class="alert alert-success" role="alert">
+ 						<p><strong>Success!</strong> {exp:favorites:delete_all type="{segment_3}"}</p>
+					</div>
+				</div>
+
+				<div class="col-sm-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+      		</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Delete All Favorites" page removes all saved favorites data for the currently logged in member.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/delete_all/">Favorites:Delete_All</a> to allow the currently logged in user to remove all of their favorites at once.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/collections/">Favorites:Collections</a> filtered by type (entry/member), to display a list of all the currently available Favorites collections for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/entries/">Favorites:Entries</a> to display the saved favorited entries of the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/members/">Favorites:Members</a> to display the saved favorited members of the currently logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

@@ -1,0 +1,109 @@
+{embed="%prefix%inc/index" page_title="All Entries"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="entry"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>All Entries</h1>
+				<p class="lead">Below is a list of all entries for this site, which will allow you to see the interaction with adding, editing and removing favorites.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+					{exp:channel:entries
+						orderby="date"
+						paginate="bottom"
+						limit="10"
+					}
+					<h3><a href="{url_title_path='%prefix%main/entry'}">{title}</a> &nbsp;<small class="text-danger"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {exp:favorites:count entry_id="{entry_id}"}</small></h3>
+					<p>
+					{if body}
+						{body}
+					{if:else}
+						<div class="alert alert-warning" role="alert">
+							No <b>body</b> field available. You'll need to either rename this field to one that exists on
+							your site, or create a new field called 'body' for this field to work.
+						</div>
+					{/if}
+					</p>
+{embed="%prefix%inc/favorites_info" type="entry" id="{entry_id}"}
+					{!-- Begin Testing and Debugging --}
+					<div class="panel panel-default solspace-debug">
+						<div class="panel-heading">
+							<h3 class="panel-title">Channel Entry Testing &amp; Debugging</h3>
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li>Entry ID: {entry_id}</li>
+								<li>URL Title: {url_title}</li>
+								<li>Count: {count}</li>
+								<li>Total Results: {total_results}</li>
+								<li>Absolute Count: {absolute_count}</li>
+								<li>Absolute Results: {absolute_results}</li>
+							</ul>
+						</div>
+					</div>
+					{!-- End Testing and Debugging --}
+					<hr />
+					{if no_results}
+						<div class="alert alert-warning" role="alert">
+ 							<p><strong>Sorry, no channel entries were found.</strong> If you continue to have trouble getting channel entries to display, make sure that:</p>
+							<ul>
+								<li>Channel entries exist for your site.</li>
+								<li>If any of your entries have a status other than <i>closed</i>, have <i>future</i> entry dates, are <i>expired</i>, etc, you'll need to include the necessary parameters on the <i>Channel:Entries</i> loop for this template.</li>
+							</ul>
+						</div>
+					{/if}
+					{paginate}
+						<ul class="pagination pagination-lg">
+						{pagination_links}
+						{first_page}
+							<li><a href="{pagination_url}">First</a></li>
+						{/first_page}
+						{previous_page}
+							<li><a href="{pagination_url}">&laquo; Previous</a></li>
+						{/previous_page}
+						{page}
+							<li{if current_page} class="active"{/if}><a href="{pagination_url}">{pagination_page_number}</a></li>
+						{/page}
+						{next_page}
+							<li><a href="{pagination_url}">Next &raquo;</a></li>
+						{/next_page}
+						{last_page}
+							<li><a href="{pagination_url}">Last</a></li>
+						{/last_page}
+						{/pagination_links}
+						</ul>
+					{/paginate}
+					{/exp:channel:entries}
+				</div>
+
+				<div class="col-sm-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+      		</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "All Entries" page displays a complete list of all entries for this site.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="https://ellislab.com/expressionengine/user-guide/add-ons/channel/channel_entries.html">Channel:Entries</a> to display a list of all entries for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/count/">Favorites:Count</a> to display the number of times each entry has been saved by members of the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/info/">Favorites:Info</a> to display and handle formatting of favorites info and adding/updating/removing favorites functionality for the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/form/">Favorites:Form</a> to allow the currently logged in user to add an entry to their favorites.</li>
+					<li><a href="http://solspace.com/docs/favorites/edit/">Favorites:Edit</a> to allow the currently logged in user to update or remove an entry from their favorites.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/collections/">Favorites:Collections</a> filtered by type (entry/member), to display a list of all the currently available Favorites collections for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/entries/">Favorites:Entries</a> to display the saved favorited entries of the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/members/">Favorites:Members</a> to display the saved favorited members of the currently logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

@@ -25,6 +25,9 @@
  *
  */
 	$system_path = './system';
+	$assign_to_config['global_vars'] = array(
+ 		"global_url" => "http://localhost/allorbit/server/"
+ 	);
 
 
 /*

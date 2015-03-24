@@ -1,0 +1,92 @@
+<div id="solspace_right_nav" class="rightNav">
+	<div>
+		<span class="button">
+			<a title="Create Tag Group" class="submit" href="<?=$create_url?>"><?=lang('new_collection')?></a>
+		</span>
+	</div>
+</div>
+
+<div class="clear_left shun"></div>
+
+
+<div id="favorites-results">
+	<div class="inner">
+
+		<?=form_open($modify_url)?>
+
+			<h3><?=lang('collections')?> - <?=lang('fav_type_entry_id')?></h3>
+			<?php if( ! empty($collections)) :?>
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<th width="2%"><?=lang('id')?></th>
+					<th width="48%"><?=lang('collection_name')?></th>
+					<th width="48%"><?=lang('collection_type')?></th>
+					<th width="2%"><input type="checkbox" name="toggle" /></th>
+				</tr>
+				<?php foreach($collections as $collection) :?>
+				<tr class="<?=($collection['default'] == 'y') ? 'default' : ''; ?>">
+					<td>
+						<?=$collection['collection_id']?>
+					</td>
+					<td>
+						<?=$collection['collection_name']?> <?=($collection['default'] == 'y') ? '<em>('.lang('default').')</em>' : ''; ?>
+					</td>
+					<td>
+						<?=lang('fav_type_'.$collection['type'])?>
+					</td>
+					<td>
+						<input type="checkbox" name="toggle[]" value="<?=$collection['collection_id']?>" />
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<?php else : ?>
+				<p><?=lang('no_collections');?></p>
+			<?php endif ?>
+
+
+			<h3><?=lang('collections')?> - <?=lang('fav_type_member')?></h3>
+			<?php if( ! empty($collections_member)) :?>
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<th width="2%"><?=lang('id')?></th>
+					<th width="48%"><?=lang('collection_name')?></th>
+					<th width="48%"><?=lang('collection_type')?></th>
+					<th width="2%"><input type="checkbox" name="toggle" /></th>
+				</tr>
+				<?php foreach($collections_member as $collection) :?>
+				<tr class="<?=($collection['default'] == 'y') ? 'default' : ''; ?>">
+					<td>
+						<?=$collection['collection_id']?>
+					</td>
+					<td>
+						<?=$collection['collection_name']?> <?=($collection['default'] == 'y') ? '<em>('.lang('default').')</em>' : ''; ?>
+					</td>
+					<td>
+						<?=lang('fav_type_'.$collection['type'])?>
+					</td>
+					<td>
+						<input type="checkbox" name="toggle[]" value="<?=$collection['collection_id']?>" />
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+			<?php else : ?>
+				<p><?=lang('no_collections');?></p>
+			<?php endif ?>
+
+		<div style="float:right;">
+			<div class="itemWrapper">
+				<input type="submit" class="submit" value="<?=lang('submit');?>">
+				&nbsp;
+				<select name="action" class="select collection_cp_action">
+					<option value="edit"><?=lang('Edit Selected')?></option>
+					<option value="delete"><?=lang('Delete Selected')?></option>
+				</select>
+			</div>
+		</div>
+
+		<?=form_close()?>
+
+	</div>
+</div>

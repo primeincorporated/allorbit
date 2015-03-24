@@ -1,0 +1,62 @@
+					{exp:favorites:info
+						{segment_3}_id="{segment_4}"
+						disable_pagination="yes"
+					}
+					<!-- DISPLAY the current favorites. This won't parse if there are no favorites for the item yet. -->
+						<p>
+							You saved this to
+							<span class="label label-{if segment_3 == "entry"}info{if:elseif segment_3 == "member"}primary{if:else}default{/if}">
+								<span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+								{favorites:collection_name}</span>
+							on {favorites:favorited_date format="%F %j, %Y"}
+							{if favorites:notes} with the notes: <i>{favorites:notes}</i>{/if}
+						</p>
+					<!-- EDIT this current favorite -->
+						<p>
+						{exp:favorites:edit
+							favorite_id="{favorites:favorite_id}"
+							return="%prefix%inc/favorites_info_ajax/{segment_3}/{segment_4}"
+							form:style="display:inline;"
+							error_page="%prefix%inc/error_ajax"
+						}
+							<select name="collection" class="form-control input-sm" style="width:30%;display:inline-block;margin-right:5px;">
+							{favorites:collections}
+								<option value="{favorites:collection}" {favorites:selected}>
+									{favorites:collection}
+								</option>
+							{/favorites:collections}
+							</select>
+							<input type="text" name="notes" value="{favorites:notes}" class="form-control input-sm" placeholder="Notes for this favorite" style="width:30%;display:inline-block;" />
+							<button type="submit" class="btn btn-sm btn-warning update" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></button>
+						{/exp:favorites:edit}
+					<!-- DELETE the current favorite -->
+						{exp:favorites:edit
+							favorite_id="{favorites:favorite_id}"
+							return="%prefix%inc/favorites_info_ajax/{segment_3}/{segment_4}"
+							form:style="display:inline;"
+							error_page="%prefix%inc/error_ajax"
+						}
+							<input type="hidden" name="delete" value="yes" style="display:inline-block;">
+							<button type="submit" class="btn btn-sm btn-danger delete" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span></button>
+						{/exp:favorites:edit}
+						</p>
+					<!-- If there are no favorites, offer to save as a favorite -->
+					{if favorites:no_results}
+						<p>
+						<!-- Create a Favorite -->
+							{exp:favorites:form
+								{segment_3}_id="{segment_4}"
+								return="%prefix%inc/favorites_info_ajax/{segment_3}/{segment_4}"
+								error_page="%prefix%inc/error_ajax"
+							}
+								<select name="collection" class="form-control input-sm" style="width:30%;display:inline-block;margin-right:5px;">
+								{favorites:collections}
+									<option value="{favorites:collection}">{favorites:collection}</option>
+								{/favorites:collections}
+								</select>
+								<input type="text" name="notes" id="notes" class="form-control input-sm" placeholder="Notes for this favorite" style="width:30%;display:inline-block;" />
+								<button type="submit" class="btn btn-sm btn-success new" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+							{/exp:favorites:form}
+						</p>
+					{/if}
+					{/exp:favorites:info}

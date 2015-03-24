@@ -1,0 +1,36 @@
+<div id="favorites-results">
+	<div class="inner">
+	<?php if( ! empty($collections)) :?>
+		<h3><?=lang('edit_collections');?></h3>
+		<form action="<?=$form_uri?>" method="post">
+			<input type="hidden" name="XID" value="<?php echo $XID_SECURE_HASH;?>" />
+			<table class="mainTable padTable" style="width:100%;" cellspacing='0' cellpadding='0' border='0'>
+				<tr>
+					<th width="1%"><?=lang('id')?></th>
+					<th><?=lang('collection_name')?></th>
+				</tr>
+				<?php foreach($collections as $collection) :?>
+				<tr>
+					<td>
+						<?=$collection['collection_id']?>
+						<?=form_hidden('collection_id['.$collection['collection_id'].']', $collection['collection_id']); ?>
+					</td>
+					<td>
+						<?=form_input('collection_name['.$collection['collection_id'].']', $collection['collection_name']);?>
+					</td>
+				</tr>
+				<?php endforeach; ?>
+			</table>
+
+		<div style="float:right;">
+			<div class="itemWrapper">
+				<input type="submit" class="submit" value="<?=lang('submit');?>">
+			</div>
+		</div>
+
+		</form>
+	<?php else : ?>
+		<p><?=lang('no_collections');?></p>
+	<?php endif ?>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<form action="<?=$form_uri?>" method="post">
+	<div class='hidden'>
+		<input type="hidden" name="XID" value="<?php echo $XID_SECURE_HASH;?>" />
+		<?php foreach($delete as $delete_id) : ?>
+			<input type="hidden" name="delete[]" value="<?php echo $delete_id;?>" />
+		<?php endforeach;?>
+	</div>
+
+
+	<p class="defaultBold"><?=$delete_question?></p>
+	<p><?=isset($extra_questions) ? $extra_questions : ''?></p>
+	<div class='alert'><p class="notice"><?=lang('action_can_not_be_undone')?></p></div>
+	<br />
+	<div class='clearfix'>
+		<input type="submit" name="submit" value="<?php echo lang('delete');?>" class="submit"  />
+	</div>
+</form>

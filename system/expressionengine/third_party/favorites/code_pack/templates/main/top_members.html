@@ -1,0 +1,121 @@
+{embed="%prefix%inc/index" page_title="Top Members"}
+	</head>
+
+	<body role="document">
+
+{embed="%prefix%inc/header" page="member"}
+
+		<div class="container" style="margin-top:30px;">
+
+			<div class="page-header">
+				<h1>Top Members</h1>
+				<p class="lead">Below is a ranked list of members for this site, which allows you to see the most favorited members for this site.</p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-8">
+{if segment_3 == "collection"}
+					<div class="alert alert-info" role="alert">
+						<p class="lead">Currently filtered by the <strong>{segment_4}</strong> collection.</p>
+					</div>
+{/if}
+					{exp:favorites:rank_members
+						orderby="total_favorites" sort="desc"
+						limit="10"
+						paginate="bottom"
+					{if segment_3 == "collection"}
+						collection="{segment_4}"
+					{/if}
+					}
+					<img src=
+					{if favorites:avatar}
+						"{favorites:avatar_url}"
+					{if:else}
+						"{exp:favorites:theme_folder_url}code_pack/images/no-profile-pic.jpg"
+					{/if}
+						 height="100" width="100" alt="{screen_name}'s photo"
+						 class="img-rounded pull-right"
+					/>
+					<h3><a href="{path='%prefix%main/member_profile'}/{member_id}">{screen_name}</a> &nbsp;<small class="text-danger"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {favorites:total_favorites}</small></h3>
+					<p>
+					{if bio}
+						{bio}
+					{if:else}
+						No bio for this member.
+					{/if}
+					</p>
+{embed="%prefix%inc/favorites_info" type="member" id="{favorites:member_id}"}
+					{!-- Begin Testing and Debugging --}
+					<div class="panel panel-default solspace-debug">
+						<div class="panel-heading">
+							<h3 class="panel-title">Member Profile Testing &amp; Debugging</h3>
+						</div>
+						<div class="panel-body">
+							<ul>
+								<li>Member ID: {member_id}</li>
+								<li>Username: {username}</li>
+								<li>Count: {favorites:count}</li>
+								<li>Total Results: {favorites:total_results}</li>
+								<li>Absolute Count: {favorites:absolute_count}</li>
+								<li>Absolute Results: {favorites:absolute_results}</li>
+							</ul>
+						</div>
+					</div>
+					{!-- End Testing and Debugging --}
+					<hr />
+					{if favorites:no_results}
+						<div class="alert alert-warning" role="alert">
+ 							<p><strong>Sorry, no members were found.</strong> If you continue to have trouble getting members to display, make sure that:</p>
+							<ul>
+								<li>At least one member has been saved to a members' favorites.</li>
+							</ul>
+						</div>
+					{/if}
+					{favorites:paginate}
+						<ul class="pagination pagination-lg">
+						{favorites:pagination_links}
+						{first_page}
+							<li><a href="{pagination_url}">First</a></li>
+						{/first_page}
+						{previous_page}
+							<li><a href="{pagination_url}">&laquo; Previous</a></li>
+						{/previous_page}
+						{page}
+							<li{if current_page} class="active"{/if}><a href="{pagination_url}">{pagination_page_number}</a></li>
+						{/page}
+						{next_page}
+							<li><a href="{pagination_url}">Next &raquo;</a></li>
+						{/next_page}
+						{last_page}
+							<li><a href="{pagination_url}">Last</a></li>
+						{/last_page}
+						{/favorites:pagination_links}
+						</ul>
+					{/favorites:paginate}
+					{/exp:favorites:rank_members}
+				</div>
+
+				<div class="col-sm-4">				
+{embed="%prefix%inc/sidebar"}
+				</div>
+      		</div>
+
+			<div class="well" style="margin-top:30px;">
+				<h2 style="margin-top:5px;">About This Page</h2>
+				<p>The "Top Members" page displays a ranked list of members, which allows you to see the most favorited members for this site. It is also set up to look for a collection name in the URI and if present, will filter the member results down to ones that are saved to that collection.</p>
+				<p>It makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/rank_members/">Favorites:Rank_Members</a> to display a ranked list of most favorited members for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/info/">Favorites:Info</a> to display and handle formatting of favorites info and adding/updating/removing favorites functionality for the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/form/">Favorites:Form</a> to allow the currently logged in user to add a member to their favorites.</li>
+					<li><a href="http://solspace.com/docs/favorites/edit/">Favorites:Edit</a> to allow the currently logged in user to update or remove a member from their favorites.</li>
+				</ul>
+				<p>The global sidebar on the right makes use of the following tags:</p>
+				<ul>
+					<li><a href="http://solspace.com/docs/favorites/collections/">Favorites:Collections</a> filtered by type (entry/member), to display a list of all the currently available Favorites collections for the site.</li>
+					<li><a href="http://solspace.com/docs/favorites/entries/">Favorites:Entries</a> to display the saved favorited entries of the currently logged in user.</li>
+					<li><a href="http://solspace.com/docs/favorites/members/">Favorites:Members</a> to display the saved favorited members of the currently logged in user.</li>
+				</ul>
+			</div>
+
+{embed="%prefix%inc/footer"}

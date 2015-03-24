@@ -1,0 +1,94 @@
+					<h3>Entry Collections{if logged_in_group_id == "1"} <small><a href="{path='%prefix%main/collections'}/">edit</a></small>{/if}</h3>
+					<h4 style="line-height:30px;">
+					{exp:favorites:collections
+						type="entry"
+					}
+						<a href="{path='%prefix%main/top_entries/collection'}/{favorites:collection_name}/" class="label label-info"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {favorites:collection_name}</a>
+					{if favorites:no_results}
+						No entry collections were found.
+					{/if}
+					{/exp:favorites:collections}
+					</h4>
+				{if logged_in_group_id == "1"}
+				<!-- a bad idea to let everyone create new collections -->
+	  				{exp:favorites:collection_form
+						type="entry"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Add new collection" style="width:80%;display:inline-block;" />
+						<button type="submit" class="btn btn-sm btn-success" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+				{/if}
+	
+					<h3>Member Collections{if logged_in_group_id == "1"} <small><a href="{path='%prefix%main/collections'}/">edit</a></small>{/if}</h3>
+					<h4 style="line-height:30px;">
+					{exp:favorites:collections
+						type="member"
+					}
+						<a href="{path='%prefix%main/top_members/collection'}/{favorites:collection_name}/" class="label label-primary"><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> {favorites:collection_name}</a>
+					{if favorites:no_results}
+						No member collections were found.
+					{/if}
+					{/exp:favorites:collections}
+					</h4>
+				{if logged_in_group_id == "1"}
+				<!-- a bad idea to let everyone create new collections -->
+	  				{exp:favorites:collection_form
+						type="member"
+					}
+						<input type="input" name="collection" class="form-control input-sm" placeholder="Add new collection" style="width:80%;display:inline-block;" />
+						<button type="submit" class="btn btn-sm btn-success" style="display:inline-block;margin-left:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+					{/exp:favorites:collection_form}
+				{/if}
+
+					<h3>My Favorite Entries</h3>
+					<div class="list-group">
+					{exp:favorites:entries
+						limit="10"
+						orderby="favorited_date"
+						sort="desc"
+						dynamic="no"
+					}
+						<a href="{url_title_path='%prefix%main/entry'}" class="list-group-item">
+							{title} &nbsp;<small class="text-danger"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {exp:favorites:count entry_id="{entry_id}"}</small>
+							{exp:favorites:info entry_id="{entry_id}" disable_pagination="yes"}
+							<span class="label label-info pull-right" style="margin-left:5px;" title="saved on {favorites:favorited_date format="%F %j, %Y"}">{favorites:collection_name}</span>
+							{/exp:favorites:info}
+						</a>
+					{if no_results}
+						<div class="alert alert-warning" role="alert">
+ 							<p><strong>Sorry, no channel entry favorites were found.</strong> If you continue to have trouble getting channel entries to display, make sure that:</p>
+							<ul>
+								<li>Channel entries exist for your site.</li>
+								<li>At least one channel entry has been saved to the currently logged in members' favorites.</li>
+								<li>If any of your entries have a status other than <i>closed</i>, have <i>future</i> entry dates, are <i>expired</i>, etc, you'll need to include the necessary parameters on the <i>Favorites:Rank_Entries</i> loop for this template.</li>
+							</ul>
+						</div>
+					{/if}
+					{/exp:favorites:entries}
+					</div>
+					
+					<h3>My Favorite Members</h3>
+					<div class="list-group">
+					{exp:favorites:members
+						limit="10"
+						orderby="favorited_date"
+						sort="desc"
+						disable_pagination="yes"
+					}
+						<a href="{path='%prefix%main/member_profile'}/{favorites:member_id}" class="list-group-item">
+							<img src="{if favorites:avatar}{favorites:avatar_url}{if:else}{exp:favorites:theme_folder_url}code_pack/images/no-profile-pic.jpg{/if}" height="35" width="35" alt="{favorites:screen_name}'s photo" class="img-rounded" /> &nbsp;
+							{favorites:screen_name} &nbsp;<small class="text-danger"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {exp:favorites:count member_id="{favorites:member_id}"}</small>
+							{exp:favorites:info member_id="{favorites:member_id}" disable_pagination="yes"}
+							<span class="label label-primary pull-right" style="padding-left:5px;" title="saved on {favorites:favorited_date format="%F %j, %Y"}">{favorites:collection_name}</span>
+							{/exp:favorites:info}
+						</a>
+					{if no_results}
+						<div class="alert alert-warning" role="alert">
+ 							<p><strong>Sorry, no member favorites were found.</strong> If you continue to have trouble getting member accounts to display, make sure that:</p>
+							<ul>
+								<li>At least one member has been saved to the currently logged in members' favorites.</li>
+							</ul>
+						</div>
+					{/if}
+					{/exp:favorites:members}
+					</div>

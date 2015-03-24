@@ -1,0 +1,68 @@
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="list-group">
+							<span class="list-group-item active">
+								<h5>
+									Those who saved this
+									&nbsp;<span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {exp:favorites:count member_id="{embed:member_id}"}
+								</h5>
+							</span>
+						{exp:favorites:saved_by
+							member_id="{embed:member_id}"
+							orderby="screen_name"
+							sort="asc"
+							limit="7"
+						}
+							<a href="{path='%prefix%main/member_profile'}/{favorites:member_id}" class="list-group-item">
+								<img src="{if favorites:avatar}{favorites:avatar_url}{if:else}{exp:favorites:theme_folder_url}code_pack/images/no-profile-pic.jpg{/if}" height="35" width="35" alt="{favorites:screen_name}'s photo" class="img-rounded" /> &nbsp;
+								<b>{favorites:screen_name}</b>
+								{!-- Begin Testing and Debugging --}
+								<ul class="solspace-debug">
+									<li>Count: <kbd>{favorites:count}</kbd></li>
+									<li>Total Results: <kbd>{favorites:total_results}</kbd></li>
+									<li>Absolute Count: <kbd>{favorites:absolute_count}</kbd></li>
+									<li>Absolute Results: <kbd>{favorites:absolute_results}</kbd></li>
+									<li>Embed Member ID: <kbd>{embed:member_id}</kbd></li>
+								</ul>
+								{!-- End Testing and Debugging --}
+							</a>
+						{if favorites:no_results}
+							<span class="list-group-item">No members have saved this member yet.</span>
+						{/if}
+						{/exp:favorites:saved_by}
+						</div>
+					</div>
+					
+					<div class="col-sm-6">
+						<div class="list-group">
+							<span class="list-group-item active">
+								<h5>They also liked</h5>
+							</span>
+						{exp:favorites:related_members
+							member_id="{embed:member_id}"
+							limit="7"
+							orderby="relevance"
+							sort="desc"
+							dynamic="off"
+						}
+							<a href="{path='%prefix%main/member_profile'}/{favorites:member_id}" class="list-group-item">
+								<img src="{if favorites:avatar}{favorites:avatar_url}{if:else}{exp:favorites:theme_folder_url}code_pack/images/no-profile-pic.jpg{/if}" height="35" width="35" alt="{favorites:screen_name}'s photo" class="img-rounded" /> &nbsp;
+								<b>{favorites:screen_name}</b> &nbsp;<small class="text-danger"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {favorites:total_favorites}</small>
+								{!-- Begin Testing and Debugging --}
+								<ul class="solspace-debug">
+									<li>Favorites Relevance: <kbd>{favorites:relevance}</kbd></li>
+									<li>Count: <kbd>{favorites:count}</kbd></li>
+									<li>Total Results: <kbd>{favorites:total_results}</kbd></li>
+									<li>Absolute Count: <kbd>{favorites:absolute_count}</kbd></li>
+									<li>Absolute Results: <kbd>{favorites:absolute_results}</kbd></li>
+									<li>Embed Member ID: <kbd>{embed:member_id}</kbd></li>
+								</ul>
+								{!-- End Testing and Debugging --}
+							</a>
+						{if favorites:no_results}
+							<span class="list-group-item">No related members for this member.</span>
+						{/if}
+						{/exp:favorites:related_members}
+						</div>
+					</div>
+				</div>
