@@ -1,0 +1,44 @@
+{embed="Includes/.Source" pageTitle="" pageDescription=""}
+		<link rel="stylesheet" type="text/css" href="{site_url}assets/css/login.css" />
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				{exp:channel:entries channel="orbits" orderby="title" sort="asc"}
+					<div class="col-xs-12 col-md-4">
+						<a href="{orbit_url}">
+							<h3>{title}</h3>
+						</a>
+						{exp:favorites:info
+					        entry_id="{entry_id}"
+					        disable_pagination="yes"
+					    }
+					        {exp:favorites:edit
+					            favorite_id="{favorites:favorite_id}"
+					        }
+					            <input type="hidden" name="delete" value="yes">
+					            <input type="submit" name="submit" value="Remove" />
+					        {/exp:favorites:edit}
+					    {if favorites:no_results}
+					        {exp:favorites:form
+					            entry_id="{entry_id}"
+					        }
+					            <input type="hidden" name="collection" value="orbits" />
+					            <input type="submit" name="submit" value="Add" />
+					        {/exp:favorites:form}
+					    {/if}
+					    {/exp:favorites:info}
+					</div>
+				{/exp:channel:entries}
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>
