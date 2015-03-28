@@ -1,0 +1,112 @@
+{embed="Includes/.Source" pageTitle="" pageDescription=""}
+		<link rel="stylesheet" type="text/css" href="{site_url}assets/css/login.css" />
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				{exp:profile:edit return="account/profile"}
+					<div class="col-xs-12">
+						{field:resume}
+					</div>
+					<div class="col-xs-12 col-md-3">
+						{field:profile_picture}
+					</div>
+					<div class="col-xs-12 col-md-9">
+						{label:personal_summary}
+						{field:personal_summary}
+					</div>
+					
+					<div class="clear"></div>
+					<hr>
+					<h3>Professional Profile</h3>
+					<hr>
+					
+					<div class="col-xs-12 col-md-6">
+						{label:job_title}
+						{field:job_title}
+					</div>
+					<div class="col-xs-12 col-md-6">
+						{label:company}
+						{field:company}
+					</div>
+					<div class="col-xs-6 col-md-3">
+						{label:overall_experience}
+						{field:overall_experience}
+					</div>
+					<div class="col-xs-6 col-md-3"></div>
+					<div class="col-xs-6 col-md-3">
+						{label:interested_in}
+						{field:interested_in}
+					</div>
+					<div class="col-xs-6 col-md-3">
+						{label:willing_to_relocate}
+						{field:willing_to_relocate}
+					</div>
+					<div class="clear"></div>
+					
+					<div class="col-xs-12 col-md-6">
+						{label:city}
+						{field:city}
+						
+						{label:region_state_province}
+						{field:region_state_province}
+					</div>
+					<div class="col-xs-12 col-md-6">
+						{label:phone}
+						{field:phone}
+					</div>
+					<div class="clear"></div>
+				    <div class="clear"></div>
+				    <div class="col-xs-12">
+					    <p>
+					    {field:share_email_phone} {instructions:share_email_phone}
+					    </p>
+				    </div>
+				    
+				    
+				    <div class="clear"></div>
+				    <hr>
+				    <h3>Professional Websites</h3>
+				    <hr>
+				    <div class="col-xs-12 col-md-6">
+					    {label:personal_website}
+					    {field:personal_website}
+					    
+					    {label:itunes}
+					    {field:itunes}
+					    
+					    {label:bitbucket}
+					    {field:bitbucket}
+					    
+					    {label:additional_links}
+					    {field:additional_links}
+				    </div>
+				    <div class="col-xs-12 col-md-6">
+					    {label:linkedin}
+					    {field:linkedin}
+					    
+					    {label:github}
+					    {field:github}
+					    
+					    {label:stack_overflow}
+					    {field:stack_overflow}
+					    
+					    {label:additional_links_two}
+					    {field:additional_links_two}
+				    </div>
+				    <fieldset>
+				        <input type="submit" value="Save" />
+				    </fieldset>
+				{/exp:profile:edit}
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>

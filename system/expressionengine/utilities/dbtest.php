@@ -1,10 +1,10 @@
 <?php
 error_reporting(0);
 
-$hostname	= "YOUR_HOSTNAME";
-$username	= "YOUR_USERNAME";
-$password	= "YOUR_PASSWORD";
-$db_name	= "NAME_OF_YOUR_DATABASE";
+$hostname	= "localhost";
+$username	= "root";
+$password	= "root";
+$db_name	= "EEv292";
 
 $conn_type = 0;  // 1 = persistent    0 = non-persistent
 

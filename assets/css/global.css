@@ -101,6 +101,19 @@ li {
 	font-size: 12px;
 }
 
+table {
+	
+}
+tr {
+	
+}
+tr:nth-child(even){
+	background-color: #ddd;
+}
+td {
+	padding: 5px 10px;	
+}
+
 /* -- GLOBAL UTILITIES & MINOR FORMATTING -- */
 
 .clear {
@@ -144,11 +157,15 @@ label {
 }
 input {
 	width: 100%;
+	margin: 3px 0px 10px;
 	padding: 4px 10px;
 }
 input[type=checkbox]{
 	width: auto !important;
 	margin-right: 15px;
+}
+textarea {
+	width: 100%;
 }
 .box-outline {
 	padding: 15px;

@@ -82,7 +82,7 @@ class Low_reorder_model extends CI_Model {
 	 * @access      public
 	 * @return      void
 	 */
-	public function load_models()
+	public static function load_models()
 	{
 		foreach (array('set', 'order') AS $model)
 		{
