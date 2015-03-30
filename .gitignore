@@ -1,5 +1,7 @@
 .DS_Store
 .htaccess
+index.php
+admin.php
 
 # Images
 images/avatars/
