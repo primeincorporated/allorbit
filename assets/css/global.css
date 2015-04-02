@@ -149,6 +149,7 @@ body, html {
 
 body {
 	font-family: helvetica;
+	color: #666;
 }
 
 label {
@@ -182,6 +183,8 @@ textarea {
 	background-image:url('../images/headerBG.png');
 	border:0px;
 	border-radius: 0px;
+	position: relative;
+	z-index: 10;
 }
 
 #logo {
@@ -196,6 +199,9 @@ textarea {
 
 #navigation_login_form input[type="password"], #navigation_login_form input[type="email"] {
 	font-size: 12px;
+	border-radius: 4px;
+	border:0px;
+	padding: 7px;
 }
 
 #navigation_login_form #submitContainer {
