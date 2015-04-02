@@ -1,5 +1,15 @@
 {embed="Includes/.Source" pageTitle="" pageDescription=""}
 		<link rel="stylesheet" type="text/css" href="{site_url}assets/css/login.css" />
+		<script type="text/javascript">
+			var resizeSlides = function(){
+				var windowHeight = $(window).height();
+				$('.loginBigSlide').height(windowHeight);
+			}
+			
+			$(document).ready(resizeSlides);
+			$(window).resize(resizeSlides);
+			
+		</script>
 	</head>
 	
 	<body>
@@ -8,6 +18,23 @@
 		{if logged_in}
 			{redirect="account/profile"}
 		{/if}
+		
+		<div class="loginBGslideshow">
+			<div class="cycle-slideshow"
+				data-cycle-slides="> div"
+			>
+				
+				<div class="loginBigSlide" style="background-image:url('{site_url}assets/images/bg1.jpg');">
+				</div>
+				
+				<div class="loginBigSlide" style="background-image:url('{site_url}assets/images/bg1.jpg');">
+				</div>
+				
+				<div class="loginBigSlide" style="background-image:url('{site_url}assets/images/bg1.jpg');">
+				</div>
+				
+			</div>
+		</div>
 		
 		<div class="full-height container">
 			<div class="col-xs-12 col-lg-10 col-lg-offset-1 center-vertically login_containers">
