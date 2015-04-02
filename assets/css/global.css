@@ -148,7 +148,7 @@ body, html {
 }
 
 body {
-	
+	font-family: helvetica;
 }
 
 label {
@@ -176,10 +176,14 @@ textarea {
 
 /* -- GLOBAL NAVIGATION -- */
 .navbar {
-	margin: 15px auto;
+	margin: 0px auto;
 	padding: 15px;
-	border: 2px solid #000;
+	height: 65px;
+	background-image:url('../images/headerBG.png');
+	border:0px;
+	border-radius: 0px;
 }
+
 #logo {
 	
 }
@@ -189,13 +193,45 @@ textarea {
 #navigation_login_form input {
 	
 }
-#navigation_login_form input[type=submit] {
 
-}
-#navigation_forgot_password {
-	float:right;
-	margin: 8px 15px 0px;
+#navigation_login_form input[type="password"], #navigation_login_form input[type="email"] {
 	font-size: 12px;
+}
+
+#navigation_login_form #submitContainer {
+	padding: 0px;
+}
+
+#navigation_login_form input[type="submit"]{
+	font-size: 12px;
+	text-transform: uppercase;
+	padding:7px 0px 6px 0;
+	width: 100%;
+	text-align: center;
+	background-color: #fff;
+	border-radius: 4px;
+	border:0px;
+	font-weight: bold;
+	color: #666;
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
+}
+
+#navigation_login_form input[type="submit"]:hover {
+	opacity: .5;
+}
+
+#navigation_forgot_password {
+	  float: right;
+	  margin: 8px 15px 0px;
+	  font-size: 10px;
+	  position: relative;
+	  top: -15px;
+	  color: #fff;
+	  right: 70px;
 }
 .navigation {
 	
@@ -211,6 +247,12 @@ textarea {
 	font-size: 16px;
 	border-right: 2px solid #000;
 }
+
+.navbar-brand {
+	padding: 0px;	
+}
+
+
 
 
 /* -- SIDE NAVIGATION -- */

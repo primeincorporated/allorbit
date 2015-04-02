@@ -1,4 +1,4 @@
-		<div class="container navbar">
+		<div class="navbar">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
 					<span class="icon-bar"></span>
@@ -6,7 +6,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{site_url}">
-					<img src="{site_url}assets/images/logo.png" class="img-responsive" id="logo" />
+					<img src="{site_url}assets/images/logoAO.png" class="img-responsive" id="logo" />
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
@@ -19,22 +19,21 @@
 						error_delimiters='<span class="error">|</span>'
 					}
 					    <div class="col-xs-12 col-md-5">
-					        <label for="email">Email</label><br />
-					        {field:email}<br />
+					        <!-- <label for="email">Email</label><br /> -->
+					       <input type="email" name="email" id="email" value="" placeholder="Email"><br />
 					        {error:email}
 					    </div>
 					    <div class="col-xs-12 col-md-5">
-					        <label for="password">Password</label><br />
-					        {field:password}<br />
+					        <!-- <label for="password">Password</label><br /> -->
+					        <input type="password" name="password" id="password" value="" placeholder="Password"><br />
 					        {error:password}
 					    </div>
 					
-					    <div class="col-xs-12 col-md-2">
-						    <label>&nbsp;</label>
+					    <div class="col-xs-12 col-md-2" id="submitContainer">
 					        <input type="submit" value="Login" />
 					    </div>
 						<div class="clear"></div>
-						<a href="login/forgot-password" class="text-right" id="navigation_forgot_password">Forgot your password?</a>
+						
 					{/exp:freemember:login}
 				{if:else}
 					<ul class="nav navbar-nav navbar-right">
