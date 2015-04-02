@@ -32,3 +32,34 @@ x.login_containers {
 	padding: 15px;
 	border-radius: 15px;
 }
+
+
+.bigSlideArrow {
+	width: 100px;
+	height: 100px;
+	background-size: contain;
+	display: block;
+	top: 50%;
+	position: fixed;
+	z-index: 10;
+	cursor: pointer;
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
+}
+
+.bigSlideArrow:hover {
+	opacity: .5;
+}
+
+#arrowLeft {
+	left:10px;
+	background-image: url('../images/arrowLeft.png');
+}
+
+#arrowRight {
+	right:10px;
+	background-image: url('../images/arrowRight.png');
+}
