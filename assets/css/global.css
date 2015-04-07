@@ -30,26 +30,26 @@
 /* -- TEXT STYLINGS -- */
 
 h1,h2,h3,h4,h5,h6 {
-	margin: 0 0 15px 0;
+	margin: 5px 0;
 }
 
 h1 {
-	font-size: 34px;
+	font-size: 24px;
 	line-height: 36px;
 }
 
 h2 {
-	font-size: 28px;
+	font-size: 22px;
 	line-height: 32px;
 }
 
 h3 {
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 28px;
 }
 
 h4 {
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 24px;
 }
 
@@ -59,13 +59,14 @@ h5 {
 }
 
 h6 {
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 16px;
 }
 
 p {
-	font-size: 16px;
-	margin:0 0 15px 0;
+	font-size: 12px;
+	line-height: 16px;
+	margin:5px 0;
 }
 
 a {
@@ -156,28 +157,51 @@ label {
 	margin: 8px 0px 3px;
 	font-size: 12px;
 }
-input {
+input[type="text"], input[type="email"], input[type="password"] {
 	width: 100%;
 	margin: 3px 0px 10px;
 	padding: 4px 10px;
+	font-size: 12px;
 }
 input[type=checkbox]{
 	width: auto !important;
 	margin-right: 15px;
 }
+
+input[type="submit"]{
+	background-color: #428bca;
+	border:2px solid #fff;
+	font-size: 18px;
+	padding: 15px 35px;
+	color: #fff;
+	text-transform: uppercase;
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
+}
+
+input[type="submit"]:hover {
+	opacity: .5
+}
+
 textarea {
 	width: 100%;
+	font-size: 12px;
+	line-height: 16px;
+	padding: 10px;
 }
 .box-outline {
 	padding: 15px;
-	border: 1px solid #000;
-	background-color: #aaa;
+	border: 1px dotted #aaa;
+	background-color: #eee;
 }
 
 
 /* -- GLOBAL NAVIGATION -- */
 .navbar {
-	margin: 0px auto;
+	margin: 0px auto 25px auto;
 	padding: 15px;
 	height: 65px;
 	background-image:url('../images/headerBG.png');
@@ -246,13 +270,19 @@ textarea {
 .navigation li {
 	list-style: none;
 }
-.navigation li a {
+.navigation li a, .navbar li a {
 	float: left;
 	display: inline-block;
 	margin: 10px 0px;
-	padding: 5px 10px;
-	font-size: 16px;
-	border-right: 2px solid #000;
+	padding: 0px;
+	font-size: 12px ;
+	color: #fff;
+	padding: 0px 10px;
+	border-right: 1px solid rgba(255,255,255,.3);
+}
+
+.navbar li a.lastLink {
+	border:0px;
 }
 
 .navbar-brand {
@@ -266,7 +296,7 @@ textarea {
 .side_navigation {
 	min-height: 400px;
 	margin: 0px;
-	border-right: 2px solid #000;
+	border-right: 1px solid #ccc;
 }
 .side_navigation li {
 	margin: 0px;
@@ -276,11 +306,24 @@ textarea {
 .side_navigation li a {
 	display: block;
 	width: 100%;
-	margin: 0px;
+	margin: 4px 0px;
 	padding: 8px 5px;
 	text-align: right;
-	background-color: #ccc;
+	font-size: 12px;
+	background-color: #fff;
+	border:1px solid #ccc;
+	border-radius: 4px 0 0 4px;
 }
 .side_navigation li a:hover {
-	background-color: #999;
+	background-color: #eee;
 }
+
+/* --- FOOTER --- */
+
+
+#footer {
+	height: 100px;
+	margin-top: 50px;
+}
+
+

@@ -16,27 +16,31 @@
 						width="400" 
 						height="400" 
 						crop="yes" 
-						class="img-responsive"
+						class="img-responsive profilePhoto"
 						allow_scale_larger="yes"
 						fallback_src="{site_url}assets/images/person_placeholder.jpg"
 					}
 					<h3>{first_name} {last_name}</h3>
 					<h5>{job_title}</h5>
 					
-					<h4>Overall Experience: {overall_experience}</h4>
+					<h6>Overall Experience: {overall_experience}</h6>
 					<p>{email}</p>
 					<p>{phone}</p>
 					
 					{if personal_website}
-						<p>Personal Website</p>
-						<a href="{personal_website}" target="_blank">{personal_website}</a>
+						<p>
+							Personal Website <br>
+							<a href="{personal_website}" target="_blank">{personal_website}</a>
+						</p>
 					{/if}
 					
 					{if additional_links OR additional_links_two}
-						<p>Additional Links</p>
-						{if additional_links}
-							<a href="{additional_links}" target="_blank">{additional_links}</a>
-						{/if}
+						<p>
+							Additional Links
+							{if additional_links}
+								<br><a href="{additional_links}" target="_blank">{additional_links}</a>
+							{/if}
+						</p>
 						{if additional_links_two}
 							<a href="{additional_links_two}" target="_blank">{additional_links_two}</a>
 						{/if}
@@ -51,7 +55,7 @@
 							<a href="mailto:{email}" class="button">Contact {first_name}</a>
 						</div>
 						<h3>Summary</h3>
-						{personal_summary}
+						<p>{personal_summary}</p>
 					</div>
 					<div class="col-xs-12 col-md-4">
 						<h5>Skills</h5>
