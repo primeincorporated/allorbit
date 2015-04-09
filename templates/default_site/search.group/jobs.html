@@ -1,0 +1,67 @@
+{embed="Includes/.Source" pageTitle="" pageDescription=""}
+		<link rel="stylesheet" type="text/css" href="{site_url}assets/images/login.css" />
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12">
+				<div class="col-xs-3">
+					<ul class="subnavigation">
+						<li><a href="{path='search/jobs'}">Search Jobs</a></li>
+						<li><a href="{path='account/interested'}">Interested In</a></li>
+						<li><a href="{path='search/managers'}">Managers</a></li>
+						<li><a href="{path='account/profile'}">Your Account</a></li>
+						<li><a href="{path='account/update'}">Change Login/Password</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-9">
+					<h1>Search Jobs</h1>
+					<form action="#" method="post">
+						<input type="text" name="keywords" />
+						<input type="submit" value="Search" />
+					</form>
+					<p>
+						Show 
+						<select>
+							<option value="10">10</option>
+							<option value="25">25</option>
+							<option value="50">50</option>
+							<option value="100">100</option>
+						</select>
+						Entries
+					</p>
+					
+					<table>
+						<tr>
+							<th>Interested In</th>
+							<th>Position</th>
+							<th>Hiring Manager</th>
+							<th>Company</th>
+							<th>Skills</th>
+							<th>Short Description</th>
+						</tr>
+						{exp:channel:entries channel="jobs" limit="10" paginiate="bottom"}
+						<tr>
+							<td>Star</td>
+							<td>{job_position}</td>
+							<td>{author_id}</td>
+							<td>{job_company}</td>
+							<td>{job_skills}</td>
+							<td>{job_short_description}</td>	
+						</tr>
+		
+							{paginate}
+								<p>Page {current_page} of {total_pages} pages {pagination_links}</p>
+							{/paginate}
+						{/exp:channel:entries}
+					</table>		
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>

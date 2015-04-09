@@ -6,7 +6,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="{site_url}">
-					<img src="{site_url}assets/images/logoAO.png" class="img-responsive" id="logo" />
+					<img src="{site_url}assets/images/logo.png" class="img-responsive" id="logo" />
 				</a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-collapse">
@@ -37,6 +37,7 @@
 					{/exp:freemember:login}
 				{if:else}
 					<ul class="nav navbar-nav navbar-right">
+						<li class="headerLoggedInName"><a href="{path="account/profile"}">Welcome: {exp:profile:view}{first_name}{/exp:profile:view}</a></li>
 						<li><a href="profile/jobs">My Jobs</a>
 						<li><a href="ios">My iOS Network</a>
 						<li><a href="events">Events</a>

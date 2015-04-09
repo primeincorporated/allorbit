@@ -31,6 +31,7 @@
 
 h1,h2,h3,h4,h5,h6 {
 	margin: 5px 0;
+	font-weight: 200;
 }
 
 h1 {
@@ -111,14 +112,39 @@ tr {
 tr:nth-child(even){
 	background-color: #ddd;
 }
+
+tr:nth-child(odd){
+	background-color: #eee;
+}
 td {
-	padding: 5px 10px;	
+	padding:10px;	
+	vertical-align: middle;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+th {
+	vertical-align: middle;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 14px;
+
 }
 
 /* -- GLOBAL UTILITIES & MINOR FORMATTING -- */
 
 .clear {
 	clear: both;
+}
+
+.pageMainHeading {
+	text-transform: uppercase;
+	color: #aaa;
+	border-bottom: 1px dotted #ccc;
+	margin-bottom: 25px;
+	padding-bottom: 15px;
+	font-weight: 200;
+	
 }
 
 .button {
@@ -170,10 +196,11 @@ input[type=checkbox]{
 
 input[type="submit"]{
 	background-color: #428bca;
-	border:2px solid #fff;
-	font-size: 18px;
-	padding: 15px 35px;
+	border:0px;
+	font-size: 13px;
+	padding: 5px 35px;
 	color: #fff;
+	width: 100% !important;
 	text-transform: uppercase;
 		transition: all .3s linear;
 		-moz-transition: all .3s linear;
@@ -213,7 +240,7 @@ textarea {
 }
 
 #logo {
-	
+	width: 200px;
 }
 #navigation_login_form label {
 	
@@ -244,6 +271,7 @@ textarea {
 	border:0px;
 	font-weight: bold;
 	color: #666;
+	
 		transition: all .3s linear;
 		-moz-transition: all .3s linear;
 		-ms-transition: all .3s linear;
@@ -279,7 +307,22 @@ textarea {
 	color: #fff;
 	padding: 0px 10px;
 	border-right: 1px solid rgba(255,255,255,.3);
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
 }
+
+.navigation li a, .navbar li a:hover {
+	background-color: rgba(255,255,255,.3);
+}
+
+.navigation li a, .navbar li a.lastLink {
+	border:0px;
+}
+
+
 
 .navbar li a.lastLink {
 	border:0px;
@@ -289,7 +332,10 @@ textarea {
 	padding: 0px;	
 }
 
-
+.navbar .headerLoggedInName a {
+	color: #eee;
+	font-style: italic;
+}
 
 
 /* -- SIDE NAVIGATION -- */
