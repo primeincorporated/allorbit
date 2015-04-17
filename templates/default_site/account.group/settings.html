@@ -1,0 +1,81 @@
+{embed="Includes/.Source" pageTitle="" pageDescription=""}
+		<link rel="stylesheet" type="text/css" href="{site_url}assets/css/account.css" />
+	</head>
+	
+	<body>
+		{embed="Includes/.Header"}
+		
+		<div class="container">
+			<div class="col-xs-12 col-md-2">
+				{embed="Includes/.Sidebar"}
+			</div>
+			<div class="col-xs-12 col-md-10">
+				<div class="row">
+					<div class="col-xs-12">
+						<h1 class="pageMainHeading">Account Settings </h1>
+					</div>
+				
+					{exp:freemember:update_profile 
+						form_id="password-form"
+						form_class="col-xs-12 col-md-6"
+						return="account/profile/updated-account"  
+						error_handling="inline" 
+						error_delimiters='<span class="error">|</span>'
+					}
+					<div class="row">
+					
+					    <div class="col-xs-12 col-md-6">
+						    <label for="first_name">First Name</label><br />
+						    {field:first_name}<br />
+						    {error:first_name}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="last_name">Last Name</label><br />
+						    {field:last_name}<br />
+							{error:last_name}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="first_name">Company Name</label><br />
+						    {field:company}<br />
+						    {error:company}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="last_name">Position</label><br />
+						    {field:position}<br />
+							{error:position}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="last_name">Department</label><br />
+						    {field:department}<br />
+							{error:department}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="email">Phone #</label><br />
+						    {field:phone}<br />
+						    {error:phone}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="email">Account Email</label><br />
+						    {field:email}<br />
+						    {error:email}
+						</div>
+						<div class="col-xs-12 col-md-6">
+						    <label for="email">Work Email</label><br />
+						    {field:work_email}<br />
+						    {error:work_email}
+						</div>
+						<div class="clear"></div>
+					
+					    <div class="col-xs-12">
+					        <input type="submit" value="Update Account" class="button" />
+					    </div>
+					
+					</div>
+					{/exp:freemember:update_profile}
+				</div>
+			</div>
+		</div>
+		
+		{embed="Includes/.Footer"}
+	</body>
+</html>
