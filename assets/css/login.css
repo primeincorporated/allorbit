@@ -63,3 +63,50 @@ x.login_containers {
 	right:10px;
 	background-image: url('../images/arrowRight.png');
 }
+
+.loginButtonContainer {
+	
+	height: 110px;
+	width: 290px;
+	background-repeat: no-repeat;
+	background-position: left center;
+	margin: 0 auto;
+}
+
+.loginCircleButton {
+	height: 105px;
+	float: right;
+	width: 108px;
+	display: block;
+	margin-top: 2px;
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
+}
+
+#login_container_left .loginButtonContainer {
+	background-image: url('../images/candidates_button.png');
+}
+
+#login_container_left .loginCircleButton {
+	background-image: url('../images/candidates_circle_button.png');
+}
+
+#login_container_right .loginButtonContainer {
+	background-image: url('../images/manager_button.png');
+}
+
+#login_container_right .loginCircleButton {
+	background-image: url('../images/manager_circle_button.png');
+}
+
+
+#login_container_left .loginCircleButton:hover {
+	background-image: url('../images/candidates_circle_staticbutton.png');
+}
+
+#login_container_right .loginCircleButton:hover {
+	background-image: url('../images/manager_circle_staticbutton.png');
+}
