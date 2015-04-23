@@ -147,15 +147,18 @@ th {
 	
 }
 
-.button {
-	display: block;
+.button, input[type="submit"] {
+	display: inline-block;
 	width: 100%;
 	margin: 10px auto;
-	padding: 30px 15px;
-	color: #000;
+	padding: 10px 15px;
+	color: #fff;
 	text-align: center;
-	background-color: #fff;
-	border: 2px solid #000;
+	background-color: #428bca;
+	text-transform: uppercase;
+	font-size: 13px;
+	letter-spacing: 3px;
+	border: 0px solid #ccc;
 	transition: all .3s linear;
 	-moz-transition: all .3s linear;
 	-ms-transition: all .3s linear;
@@ -168,6 +171,15 @@ th {
 	background-color: #ddd;
 	cursor: pointer;
 }
+
+.redButton {
+	background-color: #ff0000 !important;
+}
+
+.greenButton {
+	background-color: #16b900 !important;
+}
+
 
 body, html {
 	width: 100%;
@@ -194,20 +206,7 @@ input[type=checkbox]{
 	margin-right: 15px;
 }
 
-input[type="submit"]{
-	background-color: #428bca;
-	border:0px;
-	font-size: 13px;
-	padding: 5px 35px;
-	color: #fff;
-	width: 100% !important;
-	text-transform: uppercase;
-		transition: all .3s linear;
-		-moz-transition: all .3s linear;
-		-ms-transition: all .3s linear;
-		-webkit-transition: all .3s linear;
-		-o-transition: all .3s linear;
-}
+
 
 input[type="submit"]:hover {
 	opacity: .5
@@ -357,8 +356,15 @@ textarea {
 	text-align: right;
 	font-size: 12px;
 	background-color: #fff;
-	border:1px solid #ccc;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	border-left:1px solid #ccc;
 	border-radius: 4px 0 0 4px;
+		transition: all .3s linear;
+		-moz-transition: all .3s linear;
+		-ms-transition: all .3s linear;
+		-webkit-transition: all .3s linear;
+		-o-transition: all .3s linear;
 }
 .side_navigation li a:hover {
 	background-color: #eee;
