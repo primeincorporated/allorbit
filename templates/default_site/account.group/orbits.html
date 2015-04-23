@@ -15,9 +15,12 @@
 				</div>
 				{exp:channel:entries channel="orbits" orderby="title" sort="asc"}
 					<div class="col-xs-12 col-md-4">
-						<a href="{orbit_url}">
-							<h3>{title}</h3>
-						</a>
+						<p>
+							<a href="{orbit_url}">
+								{exp:ce_img:single src="{global_url}uploads/logo.png" class="img-responsive"}
+							</a>
+						</p>
+						<br>
 						{exp:favorites:info
 					        entry_id="{entry_id}"
 					        disable_pagination="yes"
@@ -25,8 +28,8 @@
 					        {exp:favorites:edit
 					            favorite_id="{favorites:favorite_id}"
 					        }
-					            <input type="hidden" name="delete" value="yes">
-					            <input type="submit" name="submit" value="Remove" />
+					            <input type="hidden" name="delete" value="yes" c>
+					            <input type="submit" name="submit" value="Remove" class="redButton"/>
 					        {/exp:favorites:edit}
 					    {if favorites:no_results}
 					        {exp:favorites:form

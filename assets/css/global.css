@@ -110,14 +110,14 @@ tr {
 	
 }
 tr:nth-child(even){
-	background-color: #ddd;
+	background-color: #f4f4f4;
 }
 
 tr:nth-child(odd){
-	background-color: #eee;
+	background-color: #e4e4e4;
 }
 td {
-	padding:10px;	
+	padding:0px 10px;	
 	vertical-align: middle;
 	font-size: 12px;
 	line-height: 16px;
@@ -127,6 +127,7 @@ th {
 	vertical-align: middle;
 	text-transform: uppercase;
 	font-weight: bold;
+	padding: 5px 0px;
 	font-size: 14px;
 
 }
